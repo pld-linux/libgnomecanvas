@@ -31,10 +31,6 @@ Summary:	libgnomecanvas header files
 Summary(pl):	Pliki nag³ówkowe libgnomecanvas
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
-Conflicts:	gnome-libs-devel < 1.4.1.2
-Requires:	gtk2-devel >= %{gtk2_version}
-Requires:	libart_lgpl-devel >= %{libart_lgpl_version}
-Requires:	libglade2-devel >= %{libglade2_version}
 
 %description devel
 Development part of libgnomecanvas - header files.
