@@ -59,7 +59,7 @@ Statyczna wersja biblioteki libgnomecanvas.
 
 %build
 rm -f missing
-libtoolize --copy --force
+%{__libtoolize}
 aclocal -I %{_aclocaldir}/gnome2-macros
 %{__autoconf}
 %{__automake}
