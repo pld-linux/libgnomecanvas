@@ -1,13 +1,12 @@
 Summary:	GnomeCanvas widget
 Summary(pl):	Widget GnomeCanvas
 Name:		libgnomecanvas
-Version:	2.7.91
+Version:	2.7.92
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.7/%{name}-%{version}.tar.bz2
-# Source0-md5:	e16f697883668eca8f05799d9d93ceba
-Patch0:		%{name}-locale-names.patch
+# Source0-md5:	e46b28b20209ec58f1f5a01493b531c9
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -62,9 +61,6 @@ Statyczna wersja biblioteki libgnomecanvas.
 
 %prep
 %setup -q
-%patch0 -p1
-
-rm po/no.po
 
 %build
 %{__libtoolize}
@@ -85,6 +81,8 @@ rm -rf $RPM_BUILD_ROOT
 
 # no static modules and *.la for glade modules
 rm -f $RPM_BUILD_ROOT%{_libdir}/libglade/2.0/*.{la,a}
+
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 %find_lang %{name} --with-gnome --all-name
 
