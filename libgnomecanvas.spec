@@ -6,12 +6,14 @@ Release:	2
 License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/libgnomecanvas/%{name}-%{version}.tar.bz2
+Patch0:		%{name}-gtk-doc.patch
 URL:		http://www.gnome.org/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	gtk+2-devel
-BuildRequires:	libart_lgpl-devel
+BuildRequires:	libart_lgpl-devel >= 2.3.8
 BuildRequires:	libglade2-devel
-BuildRequires:	pango-devel
+BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -53,8 +55,14 @@ Statyczna wersja biblioteki libgnomecanvas.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+rm -f missing
+libtoolize --copy --force
+aclocal
+%{__autoconf}
+%{__automake}
 %configure \
 	--enable-gtk-doc=no
 %{__make}
@@ -65,8 +73,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	pkgconfigdir=%{_pkgconfigdir}
-
-gzip -9nf AUTHORS ChangeLog NEWS README
 
 %find_lang %{name} --with-gnome --all-name
 
@@ -82,6 +88,7 @@ rm -rf %{buildroot}
 
 %files devel
 %defattr(644,root,root,755)
+%doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
 %{_pkgconfigdir}/*.pc
