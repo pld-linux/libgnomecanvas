@@ -2,92 +2,89 @@
 %define libart_lgpl_version 2.3.7.91
 %define libglade2_version 1.99.5.90
 
-Summary: GnomeCanvas widget
-Name: libgnomecanvas
-Version: 1.108.0.90
-Release: 1
-URL: http://www.gnome.org/
-Source0: %{name}-%{version}.tar.gz
-License: LGPL
-Group: System Environment/Libraries 
-BuildRoot: %{_tmppath}/%{name}-root
-Requires: gtk2 >= %{gtk2_version}
-BuildRequires: gtk2-devel >= %{gtk2_version}
-BuildRequires: libart_lgpl-devel >= %{libart_lgpl_version}
-BuildRequires: libglade2-devel >= %{libglade2_version}
+Summary:	GnomeCanvas widget
+Name:		libgnomecanvas
+Version:	1.108.0.90
+Release:	1
+License:	LGPL
+Group:		X11/Libraries
+Group(de):	X11/Libraries
+Group(es):	X11/Bibliotecas
+Group(fr):	X11/Librairies
+Group(pl):	X11/Biblioteki
+Group(pt_BR):	X11/Bibliotecas
+Group(ru):	X11/Библиотеки
+Group(uk):	X11/Б╕бл╕отеки
+Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/libgnomecanvas/%{name}-%{version}.tar.bz2
+URL:		http://www.gnome.org/
+BuildRequires:	gtk2-devel >= %{gtk2_version}
+BuildRequires:	libart_lgpl-devel >= %{libart_lgpl_version}
+BuildRequires:	libglade2-devel >= %{libglade2_version}
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_prefix		/usr/X11R6
+%define		_mandir		%{_prefix}/man
 
 %description
-
-The canvas widget allows you to create custom displays using stock items 
-such as circles, lines, text, and so on. It was originally a port of the 
-Tk canvas widget but has evolved quite a bit over time.
+The canvas widget allows you to create custom displays using stock
+items such as circles, lines, text, and so on. It was originally a
+port of the Tk canvas widget but has evolved quite a bit over time.
 
 %package devel
-Summary: Libraries and headers for libgnomecanvas.
-Group: Development/Libraries
+Summary:	Libraries and headers for libgnomecanvas.
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Разработка/Библиотеки
+Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%name = %{version}
-Conflicts:      gnome-libs-devel < 1.4.1.2
-Requires: gtk2-devel >= %{gtk2_version}
-Requires: libart_lgpl-devel >= %{libart_lgpl_version}
-Requires: libglade2-devel >= %{libglade2_version}
+Conflicts:	gnome-libs-devel < 1.4.1.2
+Requires:	gtk2-devel >= %{gtk2_version}
+Requires:	libart_lgpl-devel >= %{libart_lgpl_version}
+Requires:	libglade2-devel >= %{libglade2_version}
 
 %description devel
-
-The canvas widget allows you to create custom displays using stock items 
-such as circles, lines, text, and so on. It was originally a port of the 
-Tk canvas widget but has evolved quite a bit over time.
+The canvas widget allows you to create custom displays using stock
+items such as circles, lines, text, and so on. It was originally a
+port of the Tk canvas widget but has evolved quite a bit over time.
 
 %prep
 %setup -q
 
 %build
 %configure
-make %{?_smp_mflags}
+%{__make}
 
 %install
-rm -rf %{buildroot}
-make install DESTDIR=$RPM_BUILD_ROOT
+rm -rf $RPM_BUILD_ROOT
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+
+gzip -9nf AUTHORS ChangeLog NEWS README
 
 %find_lang %name
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %clean
 rm -rf %{buildroot}
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
-
 %files -f %{name}.lang
-%defattr(-,root,root)
-
-%doc AUTHORS COPYING ChangeLog NEWS README
-
-%{_libdir}/lib*.so.*
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
-%defattr(-,root,root)
-
-%{_libdir}/lib*.a
-%{_libdir}/lib*.so
-%{_libdir}/pkgconfig/*
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/lib*.la
+%{_pkgconfigdir}/*
 %{_includedir}/*
 
-%changelog
-* Wed Jan  2 2002 Havoc Pennington <hp@redhat.com>
-- 1.108.0.90 cvs snap
-
-* Mon Nov 26 2001 Havoc Pennington <hp@redhat.com>
-- cvs snap 1.105.0.90, gtk 1.3.11
-
-* Fri Oct 26 2001 Havoc Pennington <hp@redhat.com>
-- new cvs snap, rebuild for gtk 1.3.10, 
-  add libglade dep, fix libart dep
-
-* Fri Oct  5 2001 Havoc Pennington <hp@redhat.com>
-- rebuild cvs snap for new glib/gtk
-
-* Fri Sep 21 2001 Havoc Pennington <hp@redhat.com>
-- new cvs snap with upstream changes
-
-* Thu Sep 13 2001 Havoc Pennington <hp@redhat.com>
-- Initial build.
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/lib*.a
