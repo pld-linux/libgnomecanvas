@@ -2,7 +2,7 @@ Summary:	GnomeCanvas widget
 Summary(pl):	Widget GnomeCanvas
 Name:		libgnomecanvas
 Version:	2.0.1
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/libgnomecanvas/%{name}-%{version}.tar.bz2
@@ -18,7 +18,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
-%define		_gtkdocdir	/usr/share/doc/gtk-doc/html
+%define		_gtkdocdir	%{_defaultdocdir}/gtk-doc/html
 
 %description
 The canvas widget allows you to create custom displays using stock
@@ -35,6 +35,7 @@ Summary:	libgnomecanvas header files
 Summary(pl):	Pliki nag³ówkowe libgnomecanvas
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	gtk-doc-common
 
 %description devel
 Development part of libgnomecanvas - header files.
