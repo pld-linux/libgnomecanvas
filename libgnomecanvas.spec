@@ -1,23 +1,24 @@
 Summary:	GnomeCanvas widget
 Summary(pl):	Widget GnomeCanvas
 Name:		libgnomecanvas
-Version:	1.117.0
-Release:	2
+Version:	2.0.0
+Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/libgnomecanvas/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-gtk-doc.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	libart_lgpl-devel >= 2.3.8
-BuildRequires:	libglade2-devel
+BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libtool
+BuildRequires:	gnome-common
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
+%define		_gtkdocdir	/usr/share/doc/gtk-doc/html
 
 %description
 The canvas widget allows you to create custom displays using stock
@@ -55,16 +56,16 @@ Statyczna wersja biblioteki libgnomecanvas.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 rm -f missing
 libtoolize --copy --force
-aclocal
+aclocal -I %{_aclocaldir}/gnome2-macros
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-gtk-doc=no
+	--enable-gtk-doc \
+	--with-html-path=%{_gtkdocdir}
 %{__make}
 
 %install
@@ -72,6 +73,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
+	HTML_DIR=%{_gtkdocdir} \
 	pkgconfigdir=%{_pkgconfigdir}
 
 %find_lang %{name} --with-gnome --all-name
@@ -85,6 +87,7 @@ rm -rf %{buildroot}
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libglade/2.0/libcanvas.??
 
 %files devel
 %defattr(644,root,root,755)
@@ -93,6 +96,7 @@ rm -rf %{buildroot}
 %attr(755,root,root) %{_libdir}/lib*.la
 %{_pkgconfigdir}/*.pc
 %{_includedir}/libgnomecanvas-2.0
+%{_gtkdocdir}/*
 
 %files static
 %defattr(644,root,root,755)
