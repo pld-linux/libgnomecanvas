@@ -2,7 +2,7 @@ Summary:	GnomeCanvas widget
 Summary(pl):	Widget GnomeCanvas
 Name:		libgnomecanvas
 Version:	2.3.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
@@ -65,16 +65,14 @@ rm -f missing
 %{__automake}
 %configure \
 	--enable-gtk-doc \
-	--with-html-path=%{_gtkdocdir}
+	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	HTML_DIR=%{_gtkdocdir} \
-	pkgconfigdir=%{_pkgconfigdir}
+	DESTDIR=$RPM_BUILD_ROOT 
 
 # no static modules
 rm -f $RPM_BUILD_ROOT%{_libdir}/libglade/2.0/*.a
