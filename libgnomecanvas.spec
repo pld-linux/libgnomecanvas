@@ -1,12 +1,12 @@
 Summary:	GnomeCanvas widget
 Summary(pl):	Widget GnomeCanvas
 Name:		libgnomecanvas
-Version:	2.6.0
+Version:	2.6.1
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	a670348ceecaa85b35940dcbd9f8c20e
+# Source0-md5:	9c2ec0c165ff49973e9bb5f910918cda
 Patch0:		%{name}-locale-names.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
@@ -15,7 +15,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.4.0
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	libart_lgpl-devel >= 2.3.14
-BuildRequires:	libglade2-devel >= 1:2.0.0
+BuildRequires:	libglade2-devel >= 1:2.3.6
 BuildRequires:	libtool
 BuildRequires:	perl-base >= 5.002
 BuildRequires:	rpm-build >= 4.1-10
@@ -38,7 +38,7 @@ Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gtk-doc-common
 Requires:	libart_lgpl-devel >= 2.3.14
-Requires:	libglade2-devel >= 1:2.0.0
+Requires:	libglade2-devel >= 1:2.3.6
 
 %description devel
 Development part of libgnomecanvas - header files.
