@@ -85,7 +85,8 @@ rm -rf %{buildroot}
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%attr(755,root,root) %{_libdir}/libglade/2.0/libcanvas.??
+%{_libdir}/libglade/2.0/libcanvas.la
+%attr(755,root,root) %{_libdir}/libglade/2.0/libcanvas.so
 
 %files devel
 %defattr(644,root,root,755)
