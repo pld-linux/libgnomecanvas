@@ -11,6 +11,7 @@ URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
+BuildRequires:	gnome-common >= 2.3.0
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	libart_lgpl-devel >= 2.3.14
 BuildRequires:	libglade2-devel >= 2.0.1
