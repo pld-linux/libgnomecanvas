@@ -1,21 +1,21 @@
 Summary:	GnomeCanvas widget
 Summary(pl):	Widget GnomeCanvas
 Name:		libgnomecanvas
-Version:	2.8.0
+Version:	2.10.0
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	2bf10396a92777e7b64b6052a8a232f1
+Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnomecanvas/2.10/%{name}-%{version}.tar.bz2
+# Source0-md5:	88aac06c8dfd24671db3fe3bf881b5fc
 URL:		http://www.gnome.org/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.8.0
-BuildRequires:	gtk+2-devel >= 2:2.4.0
+BuildRequires:	gtk+2-devel >= 2:2.6.2
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	libart_lgpl-devel >= 2.3.14
-BuildRequires:	libglade2-devel >= 1:2.4.0
+BuildRequires:	libglade2-devel >= 1:2.5.0
 BuildRequires:	libtool
 BuildRequires:	perl-base >= 5.002
 BuildRequires:	pkgconfig
@@ -37,10 +37,10 @@ Summary:	libgnomecanvas header files
 Summary(pl):	Pliki nag³ówkowe libgnomecanvas
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gtk+2-devel >= 2:2.4.0
+Requires:	gtk+2-devel >= 2:2.6.2
 Requires:	gtk-doc-common
 Requires:	libart_lgpl-devel >= 2.3.14
-Requires:	libglade2-devel >= 1:2.4.0
+Requires:	libglade2-devel >= 1:2.5.0
 
 %description devel
 Development part of libgnomecanvas - header files.
@@ -71,7 +71,6 @@ Statyczna wersja biblioteki libgnomecanvas.
 %configure \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
-
 %{__make}
 
 %install
