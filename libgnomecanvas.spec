@@ -76,23 +76,26 @@ rm -rf $RPM_BUILD_ROOT
 	HTML_DIR=%{_gtkdocdir} \
 	pkgconfigdir=%{_pkgconfigdir}
 
+# no static modules
+rm -f $RPM_BUILD_ROOT%{_libdir}/libglade/2.0/*.a
+
 %find_lang %{name} --with-gnome --all-name
 
 %clean
-rm -rf %{buildroot}
+rm -rf $RPM_BUILD_ROOT
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
+%doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%{_libdir}/libglade/2.0/libcanvas.la
 %attr(755,root,root) %{_libdir}/libglade/2.0/libcanvas.so
+%{_libdir}/libglade/2.0/libcanvas.la
 
 %files devel
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_pkgconfigdir}/*.pc
@@ -102,4 +105,3 @@ rm -rf %{buildroot}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
-%{_libdir}/libglade/2.0/*.a
