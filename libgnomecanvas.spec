@@ -11,13 +11,12 @@ URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
+BuildRequires:	gnome-common
 BuildRequires:	gtk-doc
 BuildRequires:	libart_lgpl-devel >= 2.3.10
 BuildRequires:	libglade2-devel >= 2.0.1
 BuildRequires:	libtool
-BuildRequires:	gnome-common
 BuildRequires:	rpm-build >= 4.1-10
-BuildRequires:	xft-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -36,6 +35,8 @@ Summary(pl):	Pliki nag³ówkowe libgnomecanvas
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	gtk-doc-common
+Requires:	libart_lgpl-devel >= 2.3.10
+Requires:	libglade2-devel >= 2.0.1
 
 %description devel
 Development part of libgnomecanvas - header files.
