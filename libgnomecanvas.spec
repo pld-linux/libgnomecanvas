@@ -1,12 +1,12 @@
 Summary:	GnomeCanvas widget
 Summary(pl):	Widget GnomeCanvas
 Name:		libgnomecanvas
-Version:	2.5.90
+Version:	2.5.91
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	99867358dfa574e4d661cece27c32e1f
+# Source0-md5:	837c25ccd5f0ed2201a470fc1ab18beb
 Patch0:		%{name}-locale-names.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
@@ -17,6 +17,7 @@ BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	libart_lgpl-devel >= 2.3.14
 BuildRequires:	libglade2-devel >= 2.3.1
 BuildRequires:	libtool
+BuildRequires:	perl-base >= 5.002
 BuildRequires:	rpm-build >= 4.1-10
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -34,7 +35,7 @@ widgetu Tk canvas, ale od tamtego czasu nieco wyewoluowa³.
 Summary:	libgnomecanvas header files
 Summary(pl):	Pliki nag³ówkowe libgnomecanvas
 Group:		X11/Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	gtk-doc-common
 Requires:	libart_lgpl-devel >= 2.3.14
 Requires:	libglade2-devel >= 2.3.1
@@ -49,7 +50,7 @@ Czê¶æ libgnomecanvas dla programistów - pliki nag³ówkowe.
 Summary:	Static libgnomecanvas library
 Summary(pl):	Statyczna biblioteka libgnomecanvas
 Group:		X11/Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static version of libgnomecanvas library.
