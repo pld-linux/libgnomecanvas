@@ -1,19 +1,16 @@
-%define gtk2_version 1.3.12.90
-%define libart_lgpl_version 2.3.7.91
-%define libglade2_version 1.99.5.90
-
 Summary:	GnomeCanvas widget
 Summary(pl):	Widget GnomeCanvas
 Name:		libgnomecanvas
-Version:	1.109.0
+Version:	1.114.0
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/libgnomecanvas/%{name}-%{version}.tar.bz2
 URL:		http://www.gnome.org/
-BuildRequires:	gtk2-devel >= %{gtk2_version}
-BuildRequires:	libart_lgpl-devel >= %{libart_lgpl_version}
-BuildRequires:	libglade2-devel >= %{libglade2_version}
+BuildRequires:	gtk+2-devel >= 2.0.0
+BuildRequires:	libart_lgpl-devel >= 2.3.8
+BuildRequires:	libglade2-devel >= 1.99.9
+BuildRequires:	pango-devel >= 1.0.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -61,18 +58,20 @@ Statyczna wersja biblioteki libgnomecanvas.
 %setup -q
 
 %build
-%configure
+%configure \
+	--enable-gtk-doc=no
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	pkgconfigdir=%{_pkgconfigdir}
 
 gzip -9nf AUTHORS ChangeLog NEWS README
 
-%find_lang %{name}
+%find_lang %{name} --with-gnome --all-name
 
 %clean
 rm -rf %{buildroot}
@@ -88,8 +87,9 @@ rm -rf %{buildroot}
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
-%{_pkgconfigdir}/*
-%{_includedir}/*
+%{_pkgconfigdir}/*.pc
+%{_includedir}/libgnomecanvas-2.0
+%{_datadir}/gtk-doc/html/%{name}
 
 %files static
 %defattr(644,root,root,755)
