@@ -10,10 +10,10 @@ URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	libart_lgpl-devel >= 2.3.10
-BuildRequires:	libglade2-devel >= 2.0.1
-BuildRequires:	libtool
 BuildRequires:	gnome-common
+BuildRequires:	libart_lgpl-devel
+BuildRequires:	libglade2-devel
+BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -36,6 +36,8 @@ Summary(pl):	Pliki nag³ówkowe libgnomecanvas
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	gtk-doc-common
+Requires:	libart_lgpl-devel
+Requires:	libglade2-devel
 
 %description devel
 Development part of libgnomecanvas - header files.
@@ -91,12 +93,13 @@ rm -rf %{buildroot}
 # NEWS - outdated
 %doc ChangeLog
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%attr(755,root,root) %{_libdir}/libglade/2.0/libcanvas.??
+%attr(755,root,root) %{_libdir}/libglade/2.0/libcanvas.so
+%{_libdir}/libglade/2.0/libcanvas.la
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
-%attr(755,root,root) %{_libdir}/lib*.la
+%{_libdir}/lib*.la
 %{_pkgconfigdir}/*.pc
 %{_includedir}/libgnomecanvas-2.0
 %{_gtkdocdir}/*
