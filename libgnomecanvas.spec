@@ -1,7 +1,7 @@
 Summary:	GnomeCanvas widget
 Summary(pl):	Widget GnomeCanvas
 Name:		libgnomecanvas
-Version:	1.116.0
+Version:	1.117.0
 Release:	0.1
 License:	LGPL
 Group:		X11/Libraries
@@ -78,6 +78,7 @@ rm -rf %{buildroot}
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libglade/2.0/*.??
 
 %files devel
 %defattr(644,root,root,755)
