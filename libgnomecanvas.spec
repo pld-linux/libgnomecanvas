@@ -1,21 +1,21 @@
 Summary:	GnomeCanvas widget
 Summary(pl):	Widget GnomeCanvas
 Name:		libgnomecanvas
-Version:	2.6.1.1
-Release:	2
+Version:	2.8.0
+Release:	1
 License:	LGPL
 Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	040257b0231fd5fc507f731d73d9738b
-Patch0:		%{name}-locale-names.patch
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.8/%{name}-%{version}.tar.bz2
+# Source0-md5:	2bf10396a92777e7b64b6052a8a232f1
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.4.0
+BuildRequires:	gtk+2-devel >= 2:2.4.0
 BuildRequires:	gtk-doc >= 1.1
 BuildRequires:	libart_lgpl-devel >= 2.3.14
-BuildRequires:	libglade2-devel >= 1:2.3.6
+BuildRequires:	libglade2-devel >= 1:2.4.0
 BuildRequires:	libtool
 BuildRequires:	perl-base >= 5.002
 BuildRequires:	rpm-build >= 4.1-10
@@ -36,9 +36,10 @@ Summary:	libgnomecanvas header files
 Summary(pl):	Pliki nag³ówkowe libgnomecanvas
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	gtk+2-devel >= 2:2.4.0
 Requires:	gtk-doc-common
 Requires:	libart_lgpl-devel >= 2.3.14
-Requires:	libglade2-devel >= 1:2.3.6
+Requires:	libglade2-devel >= 1:2.4.0
 
 %description devel
 Development part of libgnomecanvas - header files.
@@ -60,9 +61,6 @@ Statyczna wersja biblioteki libgnomecanvas.
 
 %prep
 %setup -q
-%patch0 -p1
-
-mv po/{no,nb}.po
 
 %build
 %{__libtoolize}
@@ -83,6 +81,8 @@ rm -rf $RPM_BUILD_ROOT
 
 # no static modules and *.la for glade modules
 rm -f $RPM_BUILD_ROOT%{_libdir}/libglade/2.0/*.{la,a}
+
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 %find_lang %{name} --with-gnome --all-name
 
