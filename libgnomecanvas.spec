@@ -1,7 +1,7 @@
 Summary:	GnomeCanvas widget
 Summary(pl):	Widget GnomeCanvas
 Name:		libgnomecanvas
-Version:	2.1.5
+Version:	2.1.90
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
@@ -14,7 +14,7 @@ BuildRequires:	libart_lgpl-devel >= 2.3.10
 BuildRequires:	libglade2-devel >= 2.0.1
 BuildRequires:	libtool
 BuildRequires:	gnome-common
-BuildRequires:	rpm-build >= 4.1-8.2
+BuildRequires:	rpm-build >= 4.1-10
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
