@@ -18,6 +18,7 @@ BuildRequires:	libart_lgpl-devel >= 2.3.14
 BuildRequires:	libglade2-devel >= 1:2.4.0
 BuildRequires:	libtool
 BuildRequires:	perl-base >= 5.002
+BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.1-10
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
