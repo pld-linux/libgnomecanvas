@@ -5,12 +5,12 @@ Version:	2.0.3
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
-Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/libgnomecanvas/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/GNOME/2.0.1/sources/libgnomecanvas/%{name}-%{version}.tar.bz2
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	libart_lgpl-devel >= 2.3.8
+BuildRequires:	libart_lgpl-devel >= 2.3.10
 BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libtool
 BuildRequires:	gnome-common
