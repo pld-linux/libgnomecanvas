@@ -16,6 +16,7 @@ BuildRequires:	libglade2-devel >= 2.0.1
 BuildRequires:	libtool
 BuildRequires:	gnome-common
 BuildRequires:	rpm-build >= 4.1-10
+BuildRequires:	xft-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
