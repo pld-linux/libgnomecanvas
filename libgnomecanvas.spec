@@ -4,7 +4,7 @@
 
 Summary:	GnomeCanvas widget
 Name:		libgnomecanvas
-Version:	1.108.0.90
+Version:	1.109.0
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
