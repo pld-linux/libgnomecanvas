@@ -2,11 +2,12 @@ Summary:	GnomeCanvas widget
 Summary(pl):	Widget GnomeCanvas
 Name:		libgnomecanvas
 Version:	1.117.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/libgnomecanvas/%{name}-%{version}.tar.bz2
 URL:		http://www.gnome.org/
+BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	libart_lgpl-devel
 BuildRequires:	libglade2-devel
@@ -67,13 +68,15 @@ rm -rf $RPM_BUILD_ROOT
 
 gzip -9nf AUTHORS ChangeLog NEWS README
 
+%find_lang %{name} --with-gnome --all-name
+
 %clean
 rm -rf %{buildroot}
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
