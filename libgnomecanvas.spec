@@ -10,6 +10,7 @@ URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
+BuildRequires:	gtk-doc
 BuildRequires:	libart_lgpl-devel >= 2.3.10
 BuildRequires:	libglade2-devel >= 2.0.1
 BuildRequires:	libtool
