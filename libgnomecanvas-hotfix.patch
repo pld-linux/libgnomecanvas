@@ -1,0 +1,61 @@
+diff -aurN libgnomecanvas-2.10.1.orig/libgnomecanvas/gnome-canvas.c libgnomecanvas-2.10.1/libgnomecanvas/gnome-canvas.c
+--- libgnomecanvas-2.10.1.orig/libgnomecanvas/gnome-canvas.c	2005-05-19 16:10:25.000000000 +0200
++++ libgnomecanvas-2.10.1/libgnomecanvas/gnome-canvas.c	2005-05-23 07:58:15.000000000 +0200
+@@ -316,27 +316,26 @@
+ 
+ 	item = GNOME_CANVAS_ITEM (object);
+ 
+-	if (item->canvas)
+-		redraw_if_visible (item);
++	redraw_if_visible (item);
+ 
+ 	/* Make the canvas forget about us */
+ 
+-	if (item->canvas && item == item->canvas->current_item) {
++	if (item == item->canvas->current_item) {
+ 		item->canvas->current_item = NULL;
+ 		item->canvas->need_repick = TRUE;
+ 	}
+ 
+-	if (item->canvas && item == item->canvas->new_current_item) {
++	if (item == item->canvas->new_current_item) {
+ 		item->canvas->new_current_item = NULL;
+ 		item->canvas->need_repick = TRUE;
+ 	}
+ 
+-	if (item->canvas && item == item->canvas->grabbed_item) {
++	if (item == item->canvas->grabbed_item) {
+ 		item->canvas->grabbed_item = NULL;
+ 		gdk_pointer_ungrab (GDK_CURRENT_TIME);
+ 	}
+ 
+-	if (item->canvas && item == item->canvas->focused_item)
++	if (item == item->canvas->focused_item)
+ 		item->canvas->focused_item = NULL;
+ 
+ 	/* Normal destroy stuff */
+@@ -350,8 +349,6 @@
+ 	if (item->parent)
+ 		group_remove (GNOME_CANVAS_GROUP (item->parent), item);
+ 
+-	item->canvas = NULL;
+-
+ 	g_free (item->xform);
+ 	item->xform = NULL;
+ 
+@@ -1539,7 +1536,6 @@
+ 		child = list->data;
+ 		list = list->next;
+ 
+-		// child is unref'ed by the child's group_remove().
+ 		gtk_object_destroy (GTK_OBJECT (child));
+ 	}
+ 
+@@ -2192,7 +2188,6 @@
+ 		canvas->root_destroy_id = 0;
+ 	}
+ 	if (canvas->root) {
+-		gtk_object_destroy (GTK_OBJECT (canvas->root));
+ 		g_object_unref (G_OBJECT (canvas->root));
+ 		canvas->root = NULL;
+ 	}
