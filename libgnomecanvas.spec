@@ -1,19 +1,19 @@
 Summary:	GnomeCanvas widget
 Summary(pl):	Widget GnomeCanvas
 Name:		libgnomecanvas
-Version:	2.10.2
+Version:	2.12.0
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnomecanvas/2.10/%{name}-%{version}.tar.bz2
-# Source0-md5:	976eada7b499ae6e74966f8888c015d1
+Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnomecanvas/2.12/%{name}-%{version}.tar.bz2
+# Source0-md5:	62c0edd3d27803d341662fd9088b2d9b
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.8.0
-BuildRequires:	gtk+2-devel >= 2:2.6.2
-BuildRequires:	gtk-doc >= 1.1
+BuildRequires:	gtk+2-devel >= 2:2.8.3
+BuildRequires:	gtk-doc >= 1.3
 BuildRequires:	libart_lgpl-devel >= 2.3.14
 BuildRequires:	libglade2-devel >= 1:2.5.0
 BuildRequires:	libtool
@@ -37,7 +37,7 @@ Summary:	libgnomecanvas header files
 Summary(pl):	Pliki nag³ówkowe libgnomecanvas
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gtk+2-devel >= 2:2.6.2
+Requires:	gtk+2-devel >= 2:2.8.3
 Requires:	gtk-doc-common
 Requires:	libart_lgpl-devel >= 2.3.14
 Requires:	libglade2-devel >= 1:2.5.0
@@ -100,11 +100,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
+%{_gtkdocdir}/*
+%{_includedir}/libgnomecanvas-2.0
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_pkgconfigdir}/*.pc
-%{_includedir}/libgnomecanvas-2.0
-%{_gtkdocdir}/*
 
 %files static
 %defattr(644,root,root,755)
