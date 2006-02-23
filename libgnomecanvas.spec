@@ -1,3 +1,6 @@
+
+%bcond_without apidocs	#disable gtk-doc
+
 Summary:	GnomeCanvas widget
 Summary(pl):	Widget GnomeCanvas
 Name:		libgnomecanvas
@@ -13,7 +16,8 @@ BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gtk+2-devel >= 2:2.8.3
-BuildRequires:	gtk-doc >= 1.3
+%{?with_apidocs:BuildRequires:	gtk-doc >= 1.3}
+BuildRequires:	gtk-doc-automake >= 1.3
 BuildRequires:	libart_lgpl-devel >= 2.3.14
 BuildRequires:	libglade2-devel >= 1:2.5.0
 BuildRequires:	libtool
@@ -69,7 +73,7 @@ Statyczna wersja biblioteki libgnomecanvas.
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-gtk-doc \
+	%{?with_apidocs:--enable-gtk-doc} \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
