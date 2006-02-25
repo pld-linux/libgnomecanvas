@@ -1,6 +1,7 @@
-
-%bcond_without apidocs	#disable gtk-doc
-
+#
+# Conditional build:
+%bcond_without apidocs	# disable gtk-doc
+#
 Summary:	GnomeCanvas widget
 Summary(pl):	Widget GnomeCanvas
 Name:		libgnomecanvas
@@ -104,11 +105,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%{_gtkdocdir}/*
-%{_includedir}/libgnomecanvas-2.0
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
+%{_includedir}/libgnomecanvas-2.0
 %{_pkgconfigdir}/*.pc
+%{_gtkdocdir}/*
 
 %files static
 %defattr(644,root,root,755)
