@@ -1,16 +1,16 @@
 #
 # Conditional build:
-%bcond_without apidocs	# disable gtk-doc
+%bcond_without	apidocs		# disable gtk-doc
 #
 Summary:	GnomeCanvas widget
 Summary(pl):	Widget GnomeCanvas
 Name:		libgnomecanvas
-Version:	2.12.0
+Version:	2.14.0
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnomecanvas/2.12/%{name}-%{version}.tar.bz2
-# Source0-md5:	62c0edd3d27803d341662fd9088b2d9b
+Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnomecanvas/2.14/%{name}-%{version}.tar.bz2
+# Source0-md5:	516c46fb4a1401b05cfef58c350fbd3d
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
