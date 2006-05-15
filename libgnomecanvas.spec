@@ -1,19 +1,24 @@
+#
+# Conditional build:
+%bcond_without	apidocs		# disable gtk-doc
+#
 Summary:	GnomeCanvas widget
 Summary(pl):	Widget GnomeCanvas
 Name:		libgnomecanvas
-Version:	2.12.0
+Version:	2.14.0
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnomecanvas/2.12/%{name}-%{version}.tar.bz2
-# Source0-md5:	62c0edd3d27803d341662fd9088b2d9b
+Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnomecanvas/2.14/%{name}-%{version}.tar.bz2
+# Source0-md5:	516c46fb4a1401b05cfef58c350fbd3d
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gtk+2-devel >= 2:2.8.3
-BuildRequires:	gtk-doc >= 1.3
+%{?with_apidocs:BuildRequires:	gtk-doc >= 1.3}
+BuildRequires:	gtk-doc-automake >= 1.3
 BuildRequires:	libart_lgpl-devel >= 2.3.14
 BuildRequires:	libglade2-devel >= 1:2.5.0
 BuildRequires:	libtool
@@ -69,7 +74,7 @@ Statyczna wersja biblioteki libgnomecanvas.
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-gtk-doc \
+	%{?with_apidocs:--enable-gtk-doc} \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
@@ -100,11 +105,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%{_gtkdocdir}/*
-%{_includedir}/libgnomecanvas-2.0
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
+%{_includedir}/libgnomecanvas-2.0
 %{_pkgconfigdir}/*.pc
+%{_gtkdocdir}/*
 
 %files static
 %defattr(644,root,root,755)
