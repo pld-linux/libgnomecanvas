@@ -6,7 +6,7 @@ Summary:	GnomeCanvas widget
 Summary(pl):	Widget GnomeCanvas
 Name:		libgnomecanvas
 Version:	2.14.0
-Release:	4
+Release:	5
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnomecanvas/2.14/%{name}-%{version}.tar.bz2
@@ -74,7 +74,6 @@ Statyczna wersja biblioteki libgnomecanvas.
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-LDFLAGS="%{rpmldflags} -Wl,--as-needed"
 %configure \
 	%{?with_apidocs:--enable-gtk-doc} \
 	--with-html-dir=%{_gtkdocdir}
