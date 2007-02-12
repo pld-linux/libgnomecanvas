@@ -3,7 +3,7 @@
 %bcond_without	apidocs		# disable gtk-doc
 #
 Summary:	GnomeCanvas widget
-Summary(pl):	Widget GnomeCanvas
+Summary(pl.UTF-8):   Widget GnomeCanvas
 Name:		libgnomecanvas
 Version:	2.14.0
 Release:	5
@@ -32,14 +32,14 @@ The canvas widget allows you to create custom displays using stock
 items such as circles, lines, text, and so on. It was originally a
 port of the Tk canvas widget but has evolved quite a bit over time.
 
-%description -l pl
-Widget canvas pozwala tworzyæ w³asne widoki przy u¿yciu zgromadzonych
-rzeczy takich jak ko³a, linie, tekst itp. Oryginalnie by³ to port
-widgetu Tk canvas, ale od tamtego czasu nieco wyewoluowa³.
+%description -l pl.UTF-8
+Widget canvas pozwala tworzyÄ‡ wÅ‚asne widoki przy uÅ¼yciu zgromadzonych
+rzeczy takich jak koÅ‚a, linie, tekst itp. Oryginalnie byÅ‚ to port
+widgetu Tk canvas, ale od tamtego czasu nieco wyewoluowaÅ‚.
 
 %package devel
 Summary:	libgnomecanvas header files
-Summary(pl):	Pliki nag³ówkowe libgnomecanvas
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe libgnomecanvas
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gtk+2-devel >= 2:2.10.0
@@ -50,19 +50,19 @@ Requires:	libglade2-devel >= 1:2.6.0
 %description devel
 Development part of libgnomecanvas - header files.
 
-%description devel -l pl
-Czê¶æ libgnomecanvas dla programistów - pliki nag³ówkowe.
+%description devel -l pl.UTF-8
+CzÄ™Å›Ä‡ libgnomecanvas dla programistÃ³w - pliki nagÅ‚Ã³wkowe.
 
 %package static
 Summary:	Static libgnomecanvas library
-Summary(pl):	Statyczna biblioteka libgnomecanvas
+Summary(pl.UTF-8):   Statyczna biblioteka libgnomecanvas
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static version of libgnomecanvas library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna wersja biblioteki libgnomecanvas.
 
 %prep
