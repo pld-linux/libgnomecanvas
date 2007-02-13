@@ -3,7 +3,7 @@
 %bcond_without	apidocs		# disable gtk-doc
 #
 Summary:	GnomeCanvas widget
-Summary(pl.UTF-8):   Widget GnomeCanvas
+Summary(pl.UTF-8):	Widget GnomeCanvas
 Name:		libgnomecanvas
 Version:	2.14.0
 Release:	5
@@ -39,7 +39,7 @@ widgetu Tk canvas, ale od tamtego czasu nieco wyewoluował.
 
 %package devel
 Summary:	libgnomecanvas header files
-Summary(pl.UTF-8):   Pliki nagłówkowe libgnomecanvas
+Summary(pl.UTF-8):	Pliki nagłówkowe libgnomecanvas
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gtk+2-devel >= 2:2.10.0
@@ -55,7 +55,7 @@ Część libgnomecanvas dla programistów - pliki nagłówkowe.
 
 %package static
 Summary:	Static libgnomecanvas library
-Summary(pl.UTF-8):   Statyczna biblioteka libgnomecanvas
+Summary(pl.UTF-8):	Statyczna biblioteka libgnomecanvas
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
