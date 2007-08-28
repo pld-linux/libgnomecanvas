@@ -5,22 +5,24 @@
 Summary:	GnomeCanvas widget
 Summary(pl.UTF-8):	Widget GnomeCanvas
 Name:		libgnomecanvas
-Version:	2.14.0
-Release:	5
+Version:	2.19.2
+Release:	1
 License:	LGPL
 Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/libgnomecanvas/2.14/%{name}-%{version}.tar.bz2
-# Source0-md5:	516c46fb4a1401b05cfef58c350fbd3d
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnomecanvas/2.19/%{name}-%{version}.tar.bz2
+# Source0-md5:	fd14cd97dbd9d626cf2a7c0b7e7ac2ee
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
+BuildRequires:	gail-devel >= 1.19.6
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-common >= 2.8.0
-BuildRequires:	gtk+2-devel >= 2:2.10.0
-%{?with_apidocs:BuildRequires:	gtk-doc >= 1.6}
+BuildRequires:	gnome-common >= 2.18.0
+BuildRequires:	gtk+2-devel >= 2:2.10.14
+%{?with_apidocs:BuildRequires:	gtk-doc >= 1.8}
 BuildRequires:	gtk-doc-automake >= 1.3
-BuildRequires:	libart_lgpl-devel >= 2.3.14
-BuildRequires:	libglade2-devel >= 1:2.6.0
+BuildRequires:	intltool >= 0.36.1
+BuildRequires:	libart_lgpl-devel >= 2.3.19
+BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libtool
 BuildRequires:	perl-base >= 5.002
 BuildRequires:	pkgconfig
@@ -42,10 +44,10 @@ Summary:	libgnomecanvas header files
 Summary(pl.UTF-8):	Pliki nagłówkowe libgnomecanvas
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gtk+2-devel >= 2:2.10.0
-Requires:	gtk-doc-common
-Requires:	libart_lgpl-devel >= 2.3.14
-Requires:	libglade2-devel >= 1:2.6.0
+Requires:	gail-devel >= 1.19.6
+Requires:	gtk+2-devel >= 2:2.10.14
+Requires:	libart_lgpl-devel >= 2.3.19
+Requires:	libglade2-devel >= 1:2.6.2
 
 %description devel
 Development part of libgnomecanvas - header files.
@@ -65,11 +67,37 @@ Static version of libgnomecanvas library.
 %description static -l pl.UTF-8
 Statyczna wersja biblioteki libgnomecanvas.
 
+%package apidocs
+Summary:	libgnomecanvas API documentation
+Summary(pl.UTF-8):	Dokumentacja API libgnomecanvas
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+libgnomecanvas API documentation.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API libgnomecanvas.
+
+%package examples
+Summary:	libgnomecanvas - example programs
+Summary(pl.UTF-8):	libgnomecanvas - przykładowe programy
+Group:		X11/Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+
+%description examples
+libgnomecanvas - example programs.
+
+%description examples -l pl-UTF-8
+libgnomecanvas - przykładowe programy.
+
 %prep
 %setup -q
 
 %build
 %{__gtkdocize}
+%{__glib_gettextize}
+%{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -81,14 +109,15 @@ Statyczna wersja biblioteki libgnomecanvas.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+cp demos/*.{c,h,png} $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+
 # no static modules and *.la for glade modules
 rm -f $RPM_BUILD_ROOT%{_libdir}/libglade/2.0/*.{la,a}
-
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 %find_lang %{name} --with-gnome --all-name
 
@@ -101,7 +130,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
 %attr(755,root,root) %{_libdir}/libglade/2.0/libcanvas.so
 
 %files devel
@@ -110,8 +139,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.la
 %{_includedir}/libgnomecanvas-2.0
 %{_pkgconfigdir}/*.pc
-%{_gtkdocdir}/*
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/libgnomecanvas
+
+%files examples
+%defattr(644,root,root,755)
+%{_examplesdir}/%{name}-%{version}
