@@ -7,7 +7,7 @@ Summary(pl.UTF-8):	Widget GnomeCanvas
 Name:		libgnomecanvas
 Version:	2.20.0
 Release:	1
-License:	LGPL
+License:	LGPL v2+
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnomecanvas/2.20/%{name}-%{version}.tar.bz2
 # Source0-md5:	109b71b02e0c976d65b46129d0ad69d1
@@ -130,19 +130,19 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%attr(755,root,root) %{_libdir}/libgnomecanvas-2.so.*.*.*
 %attr(755,root,root) %{_libdir}/libglade/2.0/libcanvas.so
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libgnomecanvas-2.so
+%{_libdir}/libgnomecanvas-2.la
 %{_includedir}/libgnomecanvas-2.0
-%{_pkgconfigdir}/*.pc
+%{_pkgconfigdir}/libgnomecanvas-2.0.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libgnomecanvas-2.a
 
 %files apidocs
 %defattr(644,root,root,755)
