@@ -6,7 +6,7 @@ Summary:	GnomeCanvas widget
 Summary(pl.UTF-8):	Widget GnomeCanvas
 Name:		libgnomecanvas
 Version:	2.20.1.1
-Release:	2
+Release:	3
 License:	LGPL v2+
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnomecanvas/2.20/%{name}-%{version}.tar.bz2
@@ -137,6 +137,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/libgnomecanvas-2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgnomecanvas-2.so.0
 %attr(755,root,root) %{_libdir}/libglade/2.0/libcanvas.so
 
 %files devel
