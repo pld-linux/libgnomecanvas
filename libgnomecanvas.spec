@@ -14,6 +14,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnomecanvas/2.26/%{name}-%{ve
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
+BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gail-devel >= 1.20.0
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.20.0
