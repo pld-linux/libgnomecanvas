@@ -5,12 +5,12 @@
 Summary:	GnomeCanvas widget
 Summary(pl.UTF-8):	Widget GnomeCanvas
 Name:		libgnomecanvas
-Version:	2.26.0
-Release:	3
+Version:	2.30.1
+Release:	1
 License:	LGPL v2+
 Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnomecanvas/2.26/%{name}-%{version}.tar.bz2
-# Source0-md5:	9bbc635e5ae70e63af071af74ba7e72f
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnomecanvas/2.30/%{name}-%{version}.tar.bz2
+# Source0-md5:	362ab7b81024b3c3b4a712e7df01b169
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
@@ -98,6 +98,9 @@ libgnomecanvas - przykładowe programy.
 %prep
 %setup -q
 
+sed -i -e 's/^en@shaw//' po/LINGUAS
+rm -f po/en@shaw.po
+
 %build
 %{__gtkdocize}
 %{__glib_gettextize}
@@ -108,7 +111,8 @@ libgnomecanvas - przykładowe programy.
 %{__automake}
 %configure \
 	%{?with_apidocs:--enable-gtk-doc} \
-	--with-html-dir=%{_gtkdocdir}
+	--with-html-dir=%{_gtkdocdir} \
+	--enable-glade
 %{__make}
 
 %install
