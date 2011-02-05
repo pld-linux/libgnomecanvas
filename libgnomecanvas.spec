@@ -92,7 +92,7 @@ Requires:	%{name}-devel = %{version}-%{release}
 %description examples
 libgnomecanvas - example programs.
 
-%description examples -l pl-UTF-8
+%description examples -l pl.UTF-8
 libgnomecanvas - przykładowe programy.
 
 %prep
