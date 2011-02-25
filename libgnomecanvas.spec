@@ -5,12 +5,12 @@
 Summary:	GnomeCanvas widget
 Summary(pl.UTF-8):	Widget GnomeCanvas
 Name:		libgnomecanvas
-Version:	2.30.2
+Version:	2.30.3
 Release:	1
 License:	LGPL v2+
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnomecanvas/2.30/%{name}-%{version}.tar.bz2
-# Source0-md5:	7f7cb2348466616b034bd2265361455d
+# Source0-md5:	ffcbb719c671ff5cd86e59aeba8d0b92
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
