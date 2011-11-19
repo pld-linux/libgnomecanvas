@@ -16,19 +16,26 @@ BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gail-devel >= 1.20.0
+BuildRequires:	glib2-devel >= 1:2.10.0
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gtk+2-devel >= 2:2.12.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.8}
-BuildRequires:	gtk-doc-automake >= 1.3
+BuildRequires:	gtk-doc-automake >= 1.8
 BuildRequires:	intltool >= 0.36.2
 BuildRequires:	libart_lgpl-devel >= 2.3.19
 BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libtool
+BuildRequires:	pango-devel >= 1:1.0.1
 BuildRequires:	perl-base >= 5.002
-BuildRequires:	pkgconfig
+BuildRequires:	pkgconfig >= 1:0.18
 BuildRequires:	rpmbuild(macros) >= 1.197
-BuildRequires:	sed >= 4.0
+Requires:	gail >= 1.20.0
+Requires:	glib2 >= 1:2.10.0
+Requires:	gtk+2 >= 2:2.12.0
+Requires:	libart_lgpl >= 2.3.19
+Requires:	libglade2 >= 1:2.6.2
+Requires:	pango >= 1:1.0.1
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -49,9 +56,11 @@ Summary(pl.UTF-8):	Pliki nagłówkowe libgnomecanvas
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gail-devel >= 1.20.0
+Requires:	glib2-devel >= 1:2.10.0
 Requires:	gtk+2-devel >= 2:2.12.0
 Requires:	libart_lgpl-devel >= 2.3.19
 Requires:	libglade2-devel >= 1:2.6.2
+Requires:	pango-devel >= 1:1.0.1
 
 %description devel
 Development part of libgnomecanvas - header files.
