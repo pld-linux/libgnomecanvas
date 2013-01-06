@@ -1,0 +1,11 @@
+--- libgnomecanvas-2.30.3/configure.in.orig	2011-01-31 14:52:16.000000000 +0100
++++ libgnomecanvas-2.30.3/configure.in	2013-01-06 08:02:01.898476946 +0100
+@@ -55,7 +55,7 @@
+ AC_SUBST(LIBGNOMECANVAS_CURRENT_MINUS_AGE)
+ 
+ AM_INIT_AUTOMAKE
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ 
+ AM_MAINTAINER_MODE
+ 
