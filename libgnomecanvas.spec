@@ -53,7 +53,7 @@ widgetu Tk canvas, ale od tamtego czasu nieco wyewoluował.
 
 %package devel
 Summary:	libgnomecanvas header files
-Summary(pl.UTF-8):	Pliki nagłówkowe libgnomecanvas
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libgnomecanvas
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gail-devel >= 1.20.0
@@ -83,7 +83,7 @@ Statyczna wersja biblioteki libgnomecanvas.
 
 %package apidocs
 Summary:	libgnomecanvas API documentation
-Summary(pl.UTF-8):	Dokumentacja API libgnomecanvas
+Summary(pl.UTF-8):	Dokumentacja API biblioteki libgnomecanvas
 Group:		Documentation
 Requires:	gtk-doc-common
 
@@ -91,7 +91,7 @@ Requires:	gtk-doc-common
 libgnomecanvas API documentation.
 
 %description apidocs -l pl.UTF-8
-Dokumentacja API libgnomecanvas.
+Dokumentacja API biblioteki libgnomecanvas.
 
 %package examples
 Summary:	libgnomecanvas - example programs
@@ -133,12 +133,12 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp demos/*.{c,h,png} $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 # no static modules and *.la for glade modules
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/libglade/2.0/*.{la,a}  \
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libglade/2.0/*.{la,a} \
 	$RPM_BUILD_ROOT%{_libdir}/*.la
 
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/locale/{sr@ije,sr@ijekavian}
 
-%find_lang %{name} --with-gnome --all-name
+%find_lang %{name}-2.0
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -146,7 +146,7 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%files -f %{name}.lang
+%files -f %{name}-2.0.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/libgnomecanvas-2.so.*.*.*
