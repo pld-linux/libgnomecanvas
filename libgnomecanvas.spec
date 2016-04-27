@@ -1,12 +1,12 @@
 #
 # Conditional build:
 %bcond_without	apidocs		# disable gtk-doc
-#
+
 Summary:	GnomeCanvas widget
 Summary(pl.UTF-8):	Widget GnomeCanvas
 Name:		libgnomecanvas
 Version:	2.30.3
-Release:	4
+Release:	5
 License:	LGPL v2+
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnomecanvas/2.30/%{name}-%{version}.tar.bz2
@@ -17,8 +17,8 @@ BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gail-devel >= 1.20.0
-BuildRequires:	glib2-devel >= 1:2.10.0
 BuildRequires:	gettext-tools
+BuildRequires:	glib2-devel >= 1:2.10.0
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gtk+2-devel >= 2:2.12.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.8}
@@ -86,6 +86,9 @@ Summary:	libgnomecanvas API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libgnomecanvas
 Group:		Documentation
 Requires:	gtk-doc-common
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 libgnomecanvas API documentation.
@@ -98,6 +101,9 @@ Summary:	libgnomecanvas - example programs
 Summary(pl.UTF-8):	libgnomecanvas - przykładowe programy
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description examples
 libgnomecanvas - example programs.
@@ -136,7 +142,7 @@ cp demos/*.{c,h,png} $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libglade/2.0/*.{la,a} \
 	$RPM_BUILD_ROOT%{_libdir}/*.la
 
-%{__mv} $RPM_BUILD_ROOT%{_datadir}/locale/{sr@ije,sr@ijekavian}
+%{__mv} $RPM_BUILD_ROOT%{_localedir}/{sr@ije,sr@ijekavian}
 
 %find_lang %{name}-2.0
 
