@@ -86,9 +86,7 @@ Summary:	libgnomecanvas API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libgnomecanvas
 Group:		Documentation
 Requires:	gtk-doc-common
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 libgnomecanvas API documentation.
@@ -101,9 +99,7 @@ Summary:	libgnomecanvas - example programs
 Summary(pl.UTF-8):	libgnomecanvas - przykładowe programy
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description examples
 libgnomecanvas - example programs.
