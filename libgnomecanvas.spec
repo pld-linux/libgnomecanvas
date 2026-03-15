@@ -6,7 +6,7 @@ Summary:	GnomeCanvas widget
 Summary(pl.UTF-8):	Widget GnomeCanvas
 Name:		libgnomecanvas
 Version:	2.30.3
-Release:	5
+Release:	6
 License:	LGPL v2+
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgnomecanvas/2.30/%{name}-%{version}.tar.bz2
@@ -110,6 +110,10 @@ libgnomecanvas - przykładowe programy.
 %prep
 %setup -q
 %patch -P0 -p1
+
+# fix ISO-8859-2 encoded source file for gtk-doc (Python 3 requires UTF-8)
+iconv -f ISO-8859-2 -t UTF-8 libgnomecanvas/gnome-canvas-text.c > libgnomecanvas/gnome-canvas-text.c.utf8
+mv libgnomecanvas/gnome-canvas-text.c.utf8 libgnomecanvas/gnome-canvas-text.c
 
 %build
 %{__gtkdocize}
